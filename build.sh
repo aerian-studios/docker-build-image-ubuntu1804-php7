@@ -13,8 +13,8 @@ project=$1
 owner="aerian-studios-jenkins"
 version="0.0.1"
 
-docker build --no-cache -t $project .
-#docker build -t $project .
+#docker build --no-cache -t $project .
+docker build -t $project .
 
 docker tag "$project:latest" "$owner/$project:$version"
 

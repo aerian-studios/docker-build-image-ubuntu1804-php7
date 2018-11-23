@@ -35,3 +35,6 @@ RUN rm awscli-bundle.zip
 
 # Upgrade npm
 RUN npm install -g npm@6.1.0
+
+# Install composer
+RUN apt-get install -y composer
