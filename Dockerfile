@@ -37,4 +37,4 @@ RUN rm awscli-bundle.zip
 RUN npm install -g npm@6.1.0
 
 # Install composer
-RUN apt-get install -y composer
+RUN apt-get install -y composer php7.1-mbstring php7.1-curl php7.1-gd
