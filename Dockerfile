@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 # apt update
-RUN apt update
+RUN apt update --fix-missing
 
 # Install php7
 RUN apt-get install -y python-software-properties software-properties-common
