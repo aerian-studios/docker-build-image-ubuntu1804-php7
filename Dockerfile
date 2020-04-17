@@ -13,7 +13,7 @@ RUN apt-get install -y \
 
 RUN LC_ALL=C.UTF-8 apt-add-repository -y ppa:ondrej/php
 
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
     apt-get install nodejs -y
 
 RUN apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-common \
