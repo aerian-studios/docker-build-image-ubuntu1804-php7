@@ -15,6 +15,7 @@ RUN export PATH=/usr/bin:/usr/local/bin:$PATH
 
 # Installing npm/node
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
+RUN apt install npm -y
 
 # Installing github release tool
 #RUN curl -L https://github.com/aktau/github-release/releases/download/v0.7.2/linux-amd64-github-release.tar.bz2 | tar -xjC /tmp && chmod +x /tmp/bin/linux/amd64/github-release
