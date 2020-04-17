@@ -1,24 +1,27 @@
 FROM ubuntu:16.04
 
-# apt update
-RUN apt update --fix-missing
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PHP_VERSION=7.1
+ENV TERM=ansi
 
-# Install php7
-RUN apt-get install -y python-software-properties software-properties-common --fix-missing
-RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
-RUN apt-get update -y
-RUN apt install -y php7.1 php7.1-common php7.1-mysql php7.1-pdo php7.1-xml php7.1-cli
+RUN apt-get update --fix-missing
 
-# Installing apt tools
-RUN apt-get install -y curl wget jq git unzip zip maven default-jdk
+RUN apt-get install -y \
+    curl wget jq git unzip zip maven default-jdk \
+    python-software-properties software-properties-common \
+    build-essential
+
+RUN LC_ALL=C.UTF-8 apt-add-repository -y ppa:ondrej/php
+
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
+    apt-get install nodejs -y
+
+RUN apt-get install -y php${PHP_VERSION} php${PHP_VERSION}-common \
+    php${PHP_VERSION}-mysql php${PHP_VERSION}-pdo php${PHP_VERSION}-xml \
+    php${PHP_VERSION}-cli php${PHP_VERSION}-mbstring php${PHP_VERSION}-curl \
+    php${PHP_VERSION}-gd composer
+
 RUN export PATH=/usr/bin:/usr/local/bin:$PATH
-
-# Installing npm/node
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
-RUN apt update && apt-get install nodejs npm -y
-
-# Installing github release tool
-#RUN curl -L https://github.com/aktau/github-release/releases/download/v0.7.2/linux-amd64-github-release.tar.bz2 | tar -xjC /tmp && chmod +x /tmp/bin/linux/amd64/github-release
 
 # Installing AWS CLI
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
@@ -26,15 +29,6 @@ RUN unzip awscli-bundle.zip
 RUN ./awscli-bundle/install -b /usr/local/bin/aws
 RUN aws --version
 RUN rm awscli-bundle.zip
-
-# Installing Terraform
-#RUN wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
-#RUN unzip terraform_0.11.7_linux_amd64.zip
-#RUN cp terraform /usr/local/bin/terraform
-#RUN rm terraform_0.11.7_linux_amd64.zip
-
-# Install composer
-RUN apt-get install -y composer php7.1-mbstring php7.1-curl php7.1-gd
 
 # Upgrade bower
 RUN npm i -g bower
