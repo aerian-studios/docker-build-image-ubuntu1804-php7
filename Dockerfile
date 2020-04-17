@@ -1,10 +1,10 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 # apt update
-RUN apt update
+RUN apt update --fix-missing
 
 # Install php7
-RUN apt-get install -y python-software-properties software-properties-common
+RUN apt-get install -y python-software-properties software-properties-common --fix-missing
 RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN apt-get update -y
 RUN apt install -y php7.1 php7.1-common php7.1-mysql php7.1-pdo php7.1-xml php7.1-cli
