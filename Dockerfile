@@ -10,7 +10,7 @@ RUN apt-get update -y
 RUN apt install -y php7.1 php7.1-common php7.1-mysql php7.1-pdo php7.1-xml php7.1-cli
 
 # Installing apt tools
-RUN apt-get install -y npm nodejs curl wget jq git unzip zip maven default-jdk
+RUN apt-get install -y curl wget jq git unzip zip maven default-jdk
 RUN export PATH=/usr/bin:/usr/local/bin:$PATH
 
 # Installing npm/node
