@@ -3,7 +3,7 @@ pipeline {
         label 'master'
     }
     environment {
-        REPO_NAME = "docker-build-image-ubuntu1604-php7"
+        REPO_NAME = "docker-build-image-ubuntu1604-php74"
     }
     options {
         disableConcurrentBuilds()

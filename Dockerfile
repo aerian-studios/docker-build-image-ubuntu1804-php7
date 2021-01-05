@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV PHP_VERSION=7.1
+ENV PHP_VERSION=7.4
 ENV TERM=ansi
 
 RUN apt-get update --fix-missing
