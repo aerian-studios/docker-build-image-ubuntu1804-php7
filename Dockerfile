@@ -37,8 +37,7 @@ RUN aws --version
 RUN rm awscli-bundle.zip
 
 # Add Jenkins user
-RUN groupadd jenkins && \
-    adduser --disabled-password --gecos "" jenkins && \
+RUN adduser --disabled-password --gecos "" jenkins && \
     usermod -a -G jenkins jenkins && \
     
 
