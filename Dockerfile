@@ -36,5 +36,11 @@ RUN ./awscli-bundle/install -b /usr/local/bin/aws
 RUN aws --version
 RUN rm awscli-bundle.zip
 
+# Add Jenkins user
+RUN groupadd jenkins && \
+    adduser --disabled-password --gecos "" jenkins && \
+    usermod -a -G jenkins jenkins && \
+    
+
 # Upgrade bower
 RUN npm i -g bower
