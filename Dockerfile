@@ -38,7 +38,7 @@ RUN rm awscli-bundle.zip
 
 # Add Jenkins user
 RUN adduser --disabled-password --gecos "" jenkins && \
-    usermod -a -G jenkins jenkins && \
+    usermod -a -G jenkins jenkins
     
 
 # Upgrade bower
